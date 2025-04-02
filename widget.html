@@ -1,7 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiempo Transcurrido</title>
+</head>
 <body>
-<h1>WDD</h1>
-<p>Esto es un widget</p>
+    <h1>Tiempo sin subir nada a Instagram</h1>
+    <h2>31 de Marzo, 2025</h2>
+
+    <div id="cuadro">
+        <div class="bloque">
+            <p class="numero dias"></p>
+            <p class="texto">días</p>
+        </div>
+        <div class="bloque">
+            <p class="numero horas"></p>
+            <p class="texto">horas</p>
+        </div>
+        <div class="bloque">
+            <p class="numero minutos"></p>
+            <p class="texto">minutos</p>
+        </div>
+    </div>
+    
+    <script>
+        function updateTime() {
+            const startTime = new Date("2025-03-31T22:00:00");
+            const now = new Date();
+            
+            let diff = Math.floor((now - startTime) / 1000); // Diferencia en segundos
+            let days = Math.floor(diff / (24 * 3600));
+            diff %= (24 * 3600);
+            let hours = Math.floor(diff / 3600);
+            diff %= 3600;
+            let minutes = Math.floor(diff / 60);
+
+            document.querySelector('.dias').innerHTML= days
+            document.querySelector('.horas').innerHTML= hours
+            document.querySelector('.minutos').innerHTML= minutes
+        }
+        
+        updateTime();
+        setInterval(updateTime, 60000); // Actualiza cada minuto
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+            font-family: "Roboto", sans-serif;
+        }
+
+        h1{
+            font-size: 20px;
+            margin: 10px;
+        }
+        h2{
+            font-size: 15px;
+            margin: 10px;
+        }
+
+        #cuadro{
+            display: flex;
+            margin: 10px auto;
+            justify-content: center;
+            width: 50%;
+            border-top: 2px solid #000000;
+            border-right: 4px solid #000000;
+            border-bottom: 4px solid #000000;
+            border-left: 2px solid #000000;
+        }
+
+        .bloque{
+            margin: 10px;
+            width: 80px;
+        }
+
+        .numero{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .texto{
+            font-size: 20px;
+        }
+    </style>
 </body>
 </html>
